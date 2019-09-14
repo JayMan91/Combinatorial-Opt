@@ -3,8 +3,10 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{enumitem}
+\usepackage{amsthm}
 \setlist[itemize]{nosep}
 \setlist[enumerate]{nosep}
+\newtheorem{theorem}{Theorem}
 \newcommand{\independentI}{\mathcal{I}} 
 \begin{document}
 	\title{Discrete Optimization}
@@ -28,4 +30,35 @@ should obey the following:
 \end{itemize}
 \paragraph{example} $S$ = $\{ a,b,c \}$ and $\independentI =\{ \{ a,b \},\{ a \}, \{ b \},\phi \}$ then $\{c \},\{a,c\},\{b,c\},\{a,b,c\}$ are dependent set  $\{c\}$ is a circuit and $\{ a,b\}$ is the a basis.
 \paragraph{Rank function} The rank function $r_M : 2^S \rightarrow \mathbb{Z} $ of matroid $M$ is defined as $r_M (T) = max \{ |P|: P \subseteq T,P \in \independentI \}$
+
+\begin{theorem}
+The rank function of any matroid is submodular.
+\end{theorem}
+
+\begin{proof}
+    We have to show
+    \[
+    r_M (X)+r_M (Y) \geq r_M (X \cup Y) + r_M (X \cap Y), \forall X,Y \in 2^S
+    \]
+    Let $J$ be a maximal independent subset of $ X \cap Y$. This $J$ can be extended to $J_X$ - maximal independent subset of $X$ and $J_{XY}$ -  maximal independent subset of $X \cup Y$ 
+    
+  So, $r_M(X) = |J_X|$, $|r_M(X \cup Y)| = |J_{XY}|$, $r_M(X \cap Y)= |J|$
+
+We have to show $r_M(Y) \geq |J_{XY}|+|J|-|J_X|$
+
+$|J_{XY}|+|J|-|J_X| = |J_{XY}\backslash (J \backslash J_X)| $
+
+By construction,
+$ J \backslash J_X = J \backslash Y$.
+
+Hence $J_{XY}\backslash (J \backslash J_X) = J_{XY}\backslash (J \backslash Y) = J_{XY} \cap Y$
+
+Now, 
+\begin{align*}
+r_M (Y) \geq |J_{XY} \cap Y| &= |J_{XY}\backslash (J \backslash J_X)| \\
+ &=  |J_{XY}|+|J|-|J_X|\\
+  &= r_M (X \cup Y) + r_M (X \cap Y)- r_M(X)  
+\end{align*}
+\end{proof}
+
 \end{document}
