@@ -1,0 +1,31 @@
+\documentclass[options]{article}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\setlist[itemize]{nosep}
+\setlist[enumerate]{nosep}
+\newcommand{\independentI}{\mathcal{I}} 
+\begin{document}
+	\title{Discrete Optimization}
+	\maketitle
+\section{Matroid}
+\paragraph{Matroid} A \emph{Matroid} $M$ is defined by a set-system pair ($S$,
+$\mathcal{I}$), where $S$ is a ground set and $\mathcal{I}$ is family of subsets of $S$.
+
+For $M =$ ($S$,$\mathcal{I}$) to be a Matroid the the elements of $\mathcal{I}$
+should obey the following:
+\begin{enumerate}
+\item $\phi$ $\in \mathcal{I}$
+\item If $A \in \mathcal{I}$ and $B \subseteq A$ $\implies B \in \mathcal{I}$
+\item If $A, B \in \mathcal{I}$ and $|B| > |A|$ then $ \exists \ b \in B \backslash  A$   such that $A \cup \{ b \} \in \mathcal{I}$ 
+\end{enumerate}
+\begin{itemize}
+\item If $ T \subseteq S$ is not an element of $\mathcal{I}$ $T$ is called a dependent set.
+\item An element $T \in \mathcal{I}$ is a basis if it is a maximal independent set.
+\item A circuit is a minimal independent set.
+\item A set $T \in \mathcal{I}$  is a spanning set if T contains a basis. 
+\end{itemize}
+\paragraph{example} $S$ = $\{ a,b,c \}$ and $\independentI =\{ \{ a,b \},\{ a \}, \{ b \},\phi \}$ then $\{c \},\{a,c\},\{b,c\},\{a,b,c\}$ are dependent set  $\{c\}$ is a circuit and $\{ a,b\}$ is the a basis.
+\paragraph{Rank function} The rank function $r_M : 2^S \rightarrow \mathbb{Z} $ of matroid $M$ is defined as $r_M (T) = max \{ |P|: P \subseteq T,P \in \independentI \}$
+\end{document}
