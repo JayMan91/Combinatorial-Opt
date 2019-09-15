@@ -7,14 +7,17 @@
 \setlist[itemize]{nosep}
 \setlist[enumerate]{nosep}
 \newtheorem{theorem}{Theorem}
-\newcommand{\independentI}{\mathcal{I}} 
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newcommand{\independentI}{\mathcal{I}}
+\DeclareMathOperator*{\convhull}{convhull} 
 \begin{document}
 	\title{Discrete Optimization}
 	\maketitle
 \section{Matroid}
-\paragraph{Matroid} A \emph{Matroid} $M$ is defined by a set-system pair ($S$,
+\begin{definition}
+ A \emph{Matroid} $M$ is defined by a set-system pair ($S$,
 $\mathcal{I}$), where $S$ is a ground set and $\mathcal{I}$ is family of subsets of $S$.
-
 For $M =$ ($S$,$\mathcal{I}$) to be a Matroid the the elements of $\mathcal{I}$
 should obey the following:
 \begin{enumerate}
@@ -22,7 +25,10 @@ should obey the following:
 \item If $A \in \mathcal{I}$ and $B \subseteq A$ $\implies B \in \mathcal{I}$
 \item If $A, B \in \mathcal{I}$ and $|B| > |A|$ then $ \exists \ b \in B \backslash  A$   such that $A \cup \{ b \} \in \mathcal{I}$ 
 \end{enumerate}
+\end{definition}
+
 \begin{itemize}
+
 \item If $ T \subseteq S$ is not an element of $\mathcal{I}$ $T$ is called a dependent set.
 \item An element $T \in \mathcal{I}$ is a basis if it is a maximal independent set.
 \item A circuit is a minimal independent set.
@@ -31,6 +37,14 @@ should obey the following:
 \paragraph{example} $S$ = $\{ a,b,c \}$ and $\independentI =\{ \{ a,b \},\{ a \}, \{ b \},\phi \}$ then $\{c \},\{a,c\},\{b,c\},\{a,b,c\}$ are dependent set  $\{c\}$ is a circuit and $\{ a,b\}$ is the a basis.
 \paragraph{Rank function} The rank function $r_M : 2^S \rightarrow \mathbb{Z} $ of matroid $M$ is defined as $r_M (T) = max \{ |P|: P \subseteq T,P \in \independentI \}$
 
+With the help of rank function, we can define span as
+\begin{definition}
+For a set $T\ \subseteq S \ span(T) = \{ e \in S: rank(T) = rank(T \cup {e}) \} $
+\end{definition}
+
+\begin{definition}
+$T \subseteq S$ is said to be \emph{closed} if $span(T) = T$.
+\end{definition}
 \begin{theorem}
 The rank function of any matroid is submodular.
 \end{theorem}
@@ -60,5 +74,16 @@ r_M (Y) \geq |J_{XY} \cap Y| &= |J_{XY}\backslash (J \backslash J_X)| \\
   &= r_M (X \cup Y) + r_M (X \cap Y)- r_M(X)  
 \end{align*}
 \end{proof}
+\begin{definition}
+The indicator or incidence vector of $ T \subseteq S$ is $\chi (T) := (x_s)_{s \in S}$ such that $x_s =1$  if $s \in T$ and $x_s =0$  if $s \notin T$   
+\end{definition}
 
+\begin{definition}
+For a matroid $M = (S,\independentI)$, the \emph{matroid polytope} is defined as the convex hull of all the indicator(incidence) vectors of the independent sets of $M$. $P(M) = \convhull \{ \chi (T): T \in  \independentI \} $
+\end{definition}
+\begin{theorem}
+For a vector $x \in \mathcal{R}^S$ let $x(T)$ denotes $\sum_{i \in T} x_i$, then 
+
+$P(M) = \{ x \in \mathcal{R}_{+}^{S} : x(T) \leq r_M(T) \forall T \subseteq S \}$
+\end{theorem}
 \end{document}
