@@ -86,4 +86,19 @@ For a vector $x \in \mathcal{R}^S$ let $x(T)$ denotes $\sum_{i \in T} x_i$, then
 
 $P(M) = \{ x \in \mathcal{R}_{+}^{S} : x(T) \leq r_M(T) \forall T \subseteq S \}$
 \end{theorem}
+\section{Extensions}
+An extension of a set function $f: 2^S \rightarrow \mathcal{R}$ is some functions functions $[0,1]^S \rightarrow \mathcal{R}$ that agress with $f$ on the vertices of the hypercube.
+\subsection{Lov{\'a}sz Extension}
+Given a set function $f: 2^S \rightarrow \mathcal{R}$, for a point $ x \in [0,1]^S$, first order the componnets in decreasing order $x_{j_1} \geq ...\geq x_{j_p}$ where $(j_1,...,j_p)$ is a permutation. Then the \textbf{Lov{\'a}sz Extension} is defined as :
+\[
+\mathcal{L}_f (x) = \sum_{k=1}^n x_{j_k} [S({j_1,...,j_k}) - S({j_1,...,j_{k-1}})]
+\]
+\paragraph{example} 
+For $p=2$,
+\[
+\mathcal{L}_f (x)=\begin{cases}
+   f(\{1\})x_1+ x_2(f(\{1,2\})- f(\{1\}),& \text{if } x_1 \geq x_2\\
+     f(\{2\})x_2+ x_1(f(\{1,2\})- f(\{2\}),& \text{if } x_2 \geq x_1
+\end{cases}
+\] 
 \end{document}
