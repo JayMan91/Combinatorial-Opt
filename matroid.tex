@@ -18,7 +18,7 @@
 \begin{definition}
  A \emph{Matroid} $M$ is defined by a set-system pair ($S$,
 $\mathcal{I}$), where $S$ is a ground set and $\mathcal{I}$ is family of subsets of $S$.
-For $M =$ ($S$,$\mathcal{I}$) to be a Matroid the the elements of $\mathcal{I}$
+For $M =$ ($S$,$\mathcal{I}$) to be a Matroid the elements of $\mathcal{I}$
 should obey the following:
 \begin{enumerate}
 \item $\phi$ $\in \mathcal{I}$
@@ -89,7 +89,7 @@ $P(M) = \{ x \in \mathcal{R}_{+}^{S} : x(T) \leq r_M(T) \forall T \subseteq S \}
 \section{Extensions}
 An extension of a set function $f: 2^S \rightarrow \mathcal{R}$ is some functions functions $[0,1]^S \rightarrow \mathcal{R}$ that agress with $f$ on the vertices of the hypercube.
 \subsection{Lov{\'a}sz Extension}
-Given a set function $f: 2^S \rightarrow \mathcal{R}$, for a point $ x \in [0,1]^S$, first order the componnets in decreasing order $x_{j_1} \geq ...\geq x_{j_p}$ where $(j_1,...,j_p)$ is a permutation. Then the \textbf{Lov{\'a}sz Extension} is defined as :
+Given a set function $f: 2^S \rightarrow \mathcal{R}$, for a point $ x \in [0,1]^S$, first order the components in decreasing order $x_{j_1} \geq ...\geq x_{j_p}$ where $(j_1,...,j_p)$ is a permutation. Then the \textbf{Lov{\'a}sz Extension} is defined as :
 \[
 \mathcal{L}_f (x) = \sum_{k=1}^n x_{j_k} [S({j_1,...,j_k}) - S({j_1,...,j_{k-1}})]
 \]
@@ -101,4 +101,7 @@ For $p=2$,
      f(\{2\})x_2+ x_1(f(\{1,2\})- f(\{2\}),& \text{if } x_2 \geq x_1
 \end{cases}
 \] 
+\begin{theorem}
+A set function $f$ is submodular if and only if its Lov{\'a}sz Extension $\mathcal{L}_f$ is convex.
+\end{theorem}
 \end{document}
